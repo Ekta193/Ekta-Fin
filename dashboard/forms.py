@@ -1,13 +1,12 @@
 from django import forms
-from .models import CustomUser
 
-class SignupForm(forms.ModelForm):
-    class Meta:
-        model = CustomUser
-        fields = ['name', 'email', 'password']
-    widgets = {
-        'password': forms.PasswordInput(attrs={'placeholder': 'Password'}),
-    }
+# class SignupForm(forms.ModelForm):
+#     class Meta:
+#         model = CustomUser
+#         fields = ['name', 'email', 'password']
+#     widgets = {
+#         'password': forms.PasswordInput(attrs={'placeholder': 'Password'}),
+#     }
     
 
 class ReportForm(forms.Form):

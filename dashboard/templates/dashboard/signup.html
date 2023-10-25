@@ -151,13 +151,14 @@
       <ul class="signin">
         <div class="form-box">
           <form class="form" method="post">
+            {% csrf_token %}
             <span class="title">Sign up</span>
-            <span class="subtitle">Create a free account with your email.</span>
-                          {% csrf_token %} 
-            
-          
-            
-                          {{ form.as_p }}
+          <span class="subtitle">Create a free account with your email.</span>
+          <div class="form-container">
+            <input type="text" class="input" placeholder="Full Name">
+            <input type="email" class="input" name="email" placeholder="Email">
+            <input type="password" class="input" name="password" placeholder="Password">
+          </div>
             
             
 

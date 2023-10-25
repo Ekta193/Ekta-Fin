@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'dashboard.backends.EmailBackend',  # Create this backend
+    #'dashboard.backends.EmailBackend',  # Create this backend
 )
 
 
@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
-AUTH_USER_MODEL = 'dashboard.CustomUser'
+#AUTH_USER_MODEL = 'dashboard.CustomUser'
 
 ROOT_URLCONF = 'fintrack.urls'
 

@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import CustomUser, Data, limitData
+from .models import Data, limitData
 
 
-admin.site.register(CustomUser)
+
 admin.site.register(Data)
 admin.site.register(limitData)
 

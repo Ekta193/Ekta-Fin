@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .forms import SignupForm
+# from .forms import SignupForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Data, limitData
@@ -18,6 +18,9 @@ warnings.simplefilter("ignore", UserWarning)
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class DecimalJSONEncoder(DjangoJSONEncoder):
@@ -28,14 +31,15 @@ class DecimalJSONEncoder(DjangoJSONEncoder):
 
 def signup(request):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+            email = request.POST['email']
+            password = request.POST['password']
+
+            user = User.objects.create_user(username=email, email=email, password=password)
+            user.backend = 'django.contrib.auth.backends.ModelBackend'
+            user.save()
             login(request, user)
             return redirect(custom_login)  # Redirect to the home page after successful registration
-    else:
-        form = SignupForm()
-    return render(request, 'dashboard/signup.html', {'form': form})
+    return render(request, 'dashboard/signup.html')
 
 def custom_login(request):
     if request.method == 'POST':
